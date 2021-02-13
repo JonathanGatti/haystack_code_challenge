@@ -49,23 +49,19 @@ function EditDetailsForm({ onClose, user }: EditDetailsFormProps) {
 
   return (
     <FormContainer>
+      <h3>Edit Intro</h3>
       <form>
-        <label>
-          Edit Profile Picture
-          <input onChange={handlePhotoChange} />
-        </label>
-        <label>
-          New Email
-          <input onChange={handleEmailChange} />
-        </label>
-        <label>
-          New Linkedin url
-          <input onChange={handleLinkedinChange} />
-        </label>
-        <label>
-          New Github url
-          <input onChange={handleGithubChange} />
-        </label>
+        <label htmlFor="photo"> Edit Profile Picture</label>
+        <input id="photo" onChange={handlePhotoChange} />
+
+        <label htmlFor="email">New Email </label>
+        <input id="email" onChange={handleEmailChange} />
+
+        <label htmlFor="linkedin">New Linkedin url</label>
+        <input id="linkedin" onChange={handleLinkedinChange} />
+
+        <label htmlFor="github">New Github url</label>
+        <input id="github" onChange={handleGithubChange} />
       </form>
       <Button onClick={handleClick}>Submit</Button>
     </FormContainer>

@@ -20,8 +20,12 @@ const Container = styled.div`
   }
   ul li {
     display: inline;
+    transition: all 0.25s ease-in-out;
   }
-
+  li:hover {
+    cursor: pointer;
+    color: #d6a52b;
+  }
   img {
     width: 50px;
     height: 50px;
@@ -45,10 +49,7 @@ function Navbar({ photo, status }: NavbarProps) {
         <li>Find Jobs</li>
         <li>Inbox</li>
         <li>My Jobs</li>
-        <li>
-          status:
-          {status ? ' online' : ' offline'}
-        </li>
+        <li>status {status ? 'offline' : 'online'}</li>
         <li>
           <img alt="profile" src={photo}></img>
         </li>

@@ -59,7 +59,7 @@ function EditTechsForm({ setEditFormOpen, techs, userId }: EditTechsForm) {
       updateUser({
         variables: {
           id: userId,
-          techs: initialTechnologies,
+          techs: newTechnologies,
         },
       });
       setEditFormOpen(false);

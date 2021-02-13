@@ -1,6 +1,17 @@
 import React, { useState } from 'react';
 import { Data, Location, ViewerInterface } from '../interfaces';
 import EditDetailsForm from './EditDetailsForm';
+import styled from 'styled-components';
+
+const Container = styled.div`
+  a {
+    color: #1a3f4d;
+    text-decoration: none;
+  }
+  a:visited {
+    color: #1a3f4d;
+  }
+`;
 
 // interface UserContactDetailsProps {
 //   email: string;
@@ -17,10 +28,12 @@ interface UserContactDetailsProps {
 function UserContactDetails({ user }: UserContactDetailsProps) {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div>
-      <i onClick={() => setIsOpen(true)} className="far fa-edit"></i>
-      <h4>User contact details</h4>
-      <p>Loaction: {user.location.name}</p>
+    <Container>
+      <h4>
+        Contact details{' '}
+        <i onClick={() => setIsOpen(true)} className="far fa-edit"></i>
+      </h4>
+      <p>Location: {user.location.name}</p>
       <p>Email: {user.email}</p>
       <p>
         <a href={`${user.linkedInProfileURL}`}>Linkedin</a>
@@ -29,7 +42,7 @@ function UserContactDetails({ user }: UserContactDetailsProps) {
         <a href={`${user.github}`}>GitHub</a>
       </p>
       {isOpen && <EditDetailsForm onClose={setIsOpen} user={user} />}
-    </div>
+    </Container>
   );
 }
 

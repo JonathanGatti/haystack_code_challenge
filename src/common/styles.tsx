@@ -19,6 +19,11 @@ export const FormContainer = styled.div`
     display: flex;
     flex-direction: column;
     height: 90%;
+    width: 55%;
+  }
+  input {
+    border-radius: 5px;
+    height: 20px;
   }
   ul {
     height: 20vw;
@@ -28,6 +33,9 @@ export const FormContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+  h3 {
+    transform: translate(-120px);
   }
 `;
 
