@@ -16,9 +16,10 @@ const Container = styled.div`
 
 interface TechStackProps {
   techs: Tech[];
+  userId: string;
 }
 
-function TechStack({ techs }: TechStackProps) {
+function TechStack({ techs, userId }: TechStackProps) {
   const [isEditFormOpen, setEditFormOpen] = useState(false);
 
   const renderTechnologies = () => {
@@ -38,7 +39,11 @@ function TechStack({ techs }: TechStackProps) {
         <Button onClick={() => setEditFormOpen(true)}>Add Tech</Button>
       </div>
       {isEditFormOpen && (
-        <EditTechsForm techs={techs} setEditFormOpen={setEditFormOpen} />
+        <EditTechsForm
+          userId={userId}
+          techs={techs}
+          setEditFormOpen={setEditFormOpen}
+        />
       )}
     </Container>
   );

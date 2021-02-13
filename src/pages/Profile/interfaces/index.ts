@@ -6,9 +6,9 @@ export interface Preferences {
 }
 
 export interface Tech {
-  __typename: string;
+  __typename?: string;
   uid: string;
-  wiegth: number;
+  weight: number;
 }
 
 export interface Location {

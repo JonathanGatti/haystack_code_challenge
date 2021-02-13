@@ -42,7 +42,7 @@ function UserInfo({ user }: UserInfoProps) {
             {user.firstName} {user.lastName}
           </h3>
           <span>Current Company: {user.currentCompany}</span>
-          <TechStack techs={user.techs} />
+          <TechStack userId={user.id} techs={user.techs} />
 
           <hr />
           <h3>About</h3>
