@@ -40,7 +40,7 @@ function EditDetailsForm({ onClose, user }: EditDetailsFormProps) {
         id: user.id,
         photo: newPhotoUrl === '' ? user.photo : newPhotoUrl,
         email: newEmail === '' ? user.email : newEmail,
-        linkedinProfileUrl:
+        linkedInProfileURL:
           newLinkedinUrl === '' ? user.linkedInProfileURL : newLinkedinUrl,
         github: newGithubUrl === '' ? user.github : newGithubUrl,
       },

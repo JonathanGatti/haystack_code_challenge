@@ -27,7 +27,6 @@ interface UserContactDetailsProps {
 
 function UserContactDetails({ user }: UserContactDetailsProps) {
   const [isOpen, setIsOpen] = useState(false);
-
   return (
     <Container>
       <h4>
@@ -38,10 +37,14 @@ function UserContactDetails({ user }: UserContactDetailsProps) {
       <p>Location: {user.location.name}</p>
       <p>Email: {user.email}</p>
       <p>
-        <a href={`${user.linkedInProfileURL}`}>Linkedin</a>
+        <a target="_blank" href={`${user.linkedInProfileURL}`}>
+          Linkedin
+        </a>
       </p>
       <p>
-        <a href={`${user.github}`}>GitHub</a>
+        <a target="_blank" href={`${user.github}`}>
+          GitHub
+        </a>
       </p>
       {isOpen && <EditDetailsForm onClose={setIsOpen} user={user} />}
     </Container>

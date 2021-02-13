@@ -9,7 +9,6 @@ export  const VIEWER_QUERY = gql`
       email
       photo
       companyId
-      linkedin
       github
       location {name}
       active
