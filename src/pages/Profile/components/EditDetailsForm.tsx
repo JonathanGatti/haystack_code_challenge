@@ -3,42 +3,7 @@ import styled from 'styled-components';
 import { UPDATE_VIEWER } from '../../../api/queries';
 import { useMutation } from '@apollo/client';
 import { ViewerInterface, Location } from '../interfaces';
-
-const Container = styled.div`
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
-  width: 60vw;
-  height: 60vh;
-  background-color: whitesmoke;
-  border: 1px solid #1a3f4d;
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  button {
-    background-color: transparent;
-    border: 1px solid #1a3f4d;
-    border-radius: 5px;
-    margin-right: 5px;
-    height: 30px;
-    width: 150px;
-    font-size: 16px;
-    transition: all 0.2s ease-in;
-  }
-  button:hover {
-    cursor: pointer;
-    color: white;
-    background-color: #1a3f4d;
-  }
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-`;
+import { FormContainer, Button } from '../../../common/styles';
 
 interface EditDetailsFormProps {
   user: ViewerInterface;
@@ -83,7 +48,7 @@ function EditDetailsForm({ onClose, user }: EditDetailsFormProps) {
   };
 
   return (
-    <Container>
+    <FormContainer>
       <form>
         <label>
           Edit Profile Picture
@@ -102,8 +67,8 @@ function EditDetailsForm({ onClose, user }: EditDetailsFormProps) {
           <input onChange={handleGithubChange} />
         </label>
       </form>
-      <button onClick={handleClick}>Submit</button>
-    </Container>
+      <Button onClick={handleClick}>Submit</Button>
+    </FormContainer>
   );
 }
 

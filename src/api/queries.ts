@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 
-const userId = '601becd46d5c780026524d4e';
+export const userId = '601becd46d5c780026524d4e';
 const photoUrl =
   'https://static.onecms.io/wp-content/uploads/sites/6/2019/11/rick-and-morty-season-4-2000.jpg';
 
@@ -57,20 +57,33 @@ mutation EditUser(
 }`;
 
 export const UPDATE_TECHS = gql`
-mutation {
+mutation EditUser(
+  $id: ID!,
+  $techs: [WeightInput!]
+){
   editUser(
-    id: "601becd46d5c780026524d4e"
-    update: { techs: 
-        [
-          {uid: "react", weight: 0},
-          {uid: "javascript", weight: 0},
-          {uid: "typescript", weight: 0},
-          {uid: "html5", weight: 0},
-          {uid: "css-3", weight: 0},
-        ],
-  } 
+    id: $id
+    update: { techs: $techs} 
   ){
   id
   techs {uid} }
 }
 `;
+
+// mutation {
+//     editUser(
+//       id: "601becd46d5c780026524d4e"
+//       update: { techs: 
+//           [
+//             {uid: "react", weight: 0},
+//             {uid: "javascript", weight: 0},
+//             {uid: "typescript", weight: 0},
+//             {uid: "html5", weight: 0},
+//             {uid: "css-3", weight: 0},
+//           ],
+//     } 
+//     ){
+//     id
+//     techs {uid} 
+//   }
+//   }

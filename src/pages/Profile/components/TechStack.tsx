@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Tech } from '../interfaces';
 import styled from 'styled-components';
 import { technologies } from '../../../assets/technologies';
+import EditTechsForm from './EditTechsForm';
+import { Button } from '../../../common/styles';
 
 const Container = styled.div`
   img {
@@ -17,6 +19,8 @@ interface TechStackProps {
 }
 
 function TechStack({ techs }: TechStackProps) {
+  const [isEditFormOpen, setEditFormOpen] = useState(false);
+
   const renderTechnologies = () => {
     return techs.map((tech) => {
       for (let icon of technologies) {
@@ -30,6 +34,12 @@ function TechStack({ techs }: TechStackProps) {
     <Container>
       <h4>Tech Stack</h4>
       {renderTechnologies()}
+      <div>
+        <Button onClick={() => setEditFormOpen(true)}>Add Tech</Button>
+      </div>
+      {isEditFormOpen && (
+        <EditTechsForm techs={techs} setEditFormOpen={setEditFormOpen} />
+      )}
     </Container>
   );
 }

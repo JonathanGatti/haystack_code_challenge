@@ -10,7 +10,7 @@ interface UserInfoProps {
 
 const Container = styled.div`
   display: flex;
-  height: 40vh;
+  height: 36vh;
   width: 100%;
   img {
     max-height: 250px;
@@ -30,23 +30,6 @@ const UserDetails = styled.div`
     opacity: 0.8;
   }
 `;
-const ButtonsContainer = styled.div`
-  button {
-    background-color: transparent;
-    border: 1px solid #1a3f4d;
-    border-radius: 5px;
-    margin-right: 5px;
-    height: 30px;
-    width: 150px;
-    font-size: 16px;
-    transition: all 0.2s ease-in;
-  }
-  button:hover {
-    cursor: pointer;
-    color: white;
-    background-color: #1a3f4d;
-  }
-`;
 
 function UserInfo({ user }: UserInfoProps) {
   return (
@@ -61,9 +44,6 @@ function UserInfo({ user }: UserInfoProps) {
           <span>Current Company: {user.currentCompany}</span>
           <TechStack techs={user.techs} />
 
-          <ButtonsContainer>
-            <button>Add Tech</button>
-          </ButtonsContainer>
           <hr />
           <h3>About</h3>
           <p>{user.biography}</p>
