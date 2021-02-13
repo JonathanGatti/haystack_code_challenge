@@ -2,7 +2,7 @@ import React, { useState, ChangeEvent, MouseEvent, useEffect } from 'react';
 import { UPDATE_TECHS } from '../../../api/queries';
 import { FormContainer, Button } from '../../../common/styles';
 import { technologies } from '../../../assets/technologies';
-import { Tech } from '../interfaces';
+import { Tech, Icon } from '../interfaces';
 import { useMutation } from '@apollo/client';
 
 interface EditTechsForm {
@@ -45,10 +45,11 @@ function EditTechsForm({ setEditFormOpen, techs, userId }: EditTechsForm) {
   };
 
   const handleClick = (
-    e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
+    e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>,
+    techName: string
   ) => {
     e.preventDefault();
-    setNewTech({ ...initialTech, uid: value });
+    setNewTech({ ...initialTech, uid: techName });
     if (newTech.uid !== '' && newTechnologies)
       setNewTechnologies([...newTechnologies, newTech]);
   };
@@ -58,7 +59,7 @@ function EditTechsForm({ setEditFormOpen, techs, userId }: EditTechsForm) {
       updateUser({
         variables: {
           id: userId,
-          techs: newTechnologies,
+          techs: initialTechnologies,
         },
       });
       setEditFormOpen(false);
@@ -66,12 +67,15 @@ function EditTechsForm({ setEditFormOpen, techs, userId }: EditTechsForm) {
   };
 
   const renderTechs = () => {
-    const searchedTechs = technologies.filter((tech) => tech.name === value);
+    let searchedTechs: Icon[] = [];
+    if (value !== '') {
+      searchedTechs = technologies.filter((tech) => tech.name.includes(value));
+    }
     return searchedTechs.map((icon) => (
-      <div>
-        <Button onClick={handleClick}>Add Tech</Button>
-        <img src={icon.iconUrl}></img>
-      </div>
+      <li>
+        <img alt="tech icon" src={icon.iconUrl}></img>
+        <Button onClick={(e) => handleClick(e, icon.name)}>Add Tech</Button>
+      </li>
     ));
   };
   return (
@@ -81,7 +85,7 @@ function EditTechsForm({ setEditFormOpen, techs, userId }: EditTechsForm) {
           Search tech
           <input onChange={handleChnage} placeholder="Search..." />
         </label>
-        {renderTechs()}
+        <ul>{renderTechs()}</ul>
       </form>
       <Button onClick={handleSubmit}>Submit</Button>
     </FormContainer>

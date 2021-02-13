@@ -39,3 +39,8 @@ export interface ViewerInterface {
   techs: Tech[];
   preferences: Preferences;
 }
+
+export interface Icon {
+  name: string,
+  iconUrl: string;
+}
