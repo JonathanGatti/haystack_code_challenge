@@ -56,5 +56,21 @@ mutation EditUser(
   }
 }`;
 
-
-
+export const UPDATE_TECHS = gql`
+mutation {
+  editUser(
+    id: "601becd46d5c780026524d4e"
+    update: { techs: 
+        [
+          {uid: "react", weight: 0},
+          {uid: "javascript", weight: 0},
+          {uid: "typescript", weight: 0},
+          {uid: "html5", weight: 0},
+          {uid: "css-3", weight: 0},
+        ],
+  } 
+  ){
+  id
+  techs {uid} }
+}
+`;
