@@ -40,6 +40,10 @@ function EditTechsForm({ setEditFormOpen, techs, userId }: EditTechsForm) {
     setNewTechnologies([...newTechs]);
   }, []);
 
+  useEffect(() => {
+    if (newTech.uid !== '') setNewTechnologies([...newTechnologies, newTech]);
+  }, [newTech.uid]);
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
   };
@@ -50,21 +54,17 @@ function EditTechsForm({ setEditFormOpen, techs, userId }: EditTechsForm) {
   ) => {
     e.preventDefault();
     setNewTech({ ...initialTech, uid: techName });
-    if (newTech.uid !== '' && newTechnologies)
-      setNewTechnologies([...newTechnologies, newTech]);
     setValue('');
   };
 
   const handleSubmit = () => {
-    if (newTechnologies) {
-      updateUser({
-        variables: {
-          id: userId,
-          techs: initialTechnologies,
-        },
-      });
-      setEditFormOpen(false);
-    }
+    updateUser({
+      variables: {
+        id: userId,
+        techs: newTechnologies,
+      },
+    });
+    setEditFormOpen(false);
   };
 
   const renderTechs = () => {

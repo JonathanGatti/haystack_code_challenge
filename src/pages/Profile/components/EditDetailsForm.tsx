@@ -65,7 +65,7 @@ function EditDetailsForm({ onClose, user }: EditDetailsFormProps) {
           placeholder=" Insert new email..."
         />
 
-        <label htmlFor="linkedin">New Linkedin account</label>
+        <label htmlFor="linkedin">New LinkedIn account</label>
         <input
           id="linkedin"
           onChange={handleLinkedinChange}

@@ -49,7 +49,7 @@ function Navbar({ photo, status }: NavbarProps) {
         <li>Find Jobs</li>
         <li>Inbox</li>
         <li>My Jobs</li>
-        <li>status {status ? 'offline' : 'online'}</li>
+        <li>Status {status ? 'offline' : 'online'}</li>
         <li>
           <img alt="profile" src={photo}></img>
         </li>
