@@ -24,6 +24,7 @@ export const FormContainer = styled.div`
   input {
     border-radius: 5px;
     height: 20px;
+    margin-bottom: 10px;
   }
   ul {
     height: 20vw;
@@ -33,9 +34,10 @@ export const FormContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: scroll;
   }
   h3 {
-    transform: translate(-120px);
+    transform: translate(-145%);
   }
 `;
 
@@ -44,6 +46,7 @@ export const Button = styled.button`
   border: 1px solid #1a3f4d;
   border-radius: 5px;
   margin-right: 5px;
+  margin-bottom: 10px;
   height: 30px;
   width: 100px;
   font-size: 16px;

@@ -40,7 +40,7 @@ function EditTechsForm({ setEditFormOpen, techs, userId }: EditTechsForm) {
     setNewTechnologies([...newTechs]);
   }, []);
 
-  const handleChnage = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
   };
 
@@ -52,6 +52,7 @@ function EditTechsForm({ setEditFormOpen, techs, userId }: EditTechsForm) {
     setNewTech({ ...initialTech, uid: techName });
     if (newTech.uid !== '' && newTechnologies)
       setNewTechnologies([...newTechnologies, newTech]);
+    setValue('');
   };
 
   const handleSubmit = () => {
@@ -59,7 +60,7 @@ function EditTechsForm({ setEditFormOpen, techs, userId }: EditTechsForm) {
       updateUser({
         variables: {
           id: userId,
-          techs: newTechnologies,
+          techs: initialTechnologies,
         },
       });
       setEditFormOpen(false);
@@ -80,10 +81,15 @@ function EditTechsForm({ setEditFormOpen, techs, userId }: EditTechsForm) {
   };
   return (
     <FormContainer>
+      <h3>Add techs</h3>
       <form>
         <label>
-          Search tech
-          <input onChange={handleChnage} placeholder="Search..." />
+          Search tech{' '}
+          <input
+            placeholder="Search..."
+            value={value}
+            onChange={handleChange}
+          />
         </label>
         <ul>{renderTechs()}</ul>
       </form>

@@ -27,12 +27,14 @@ interface UserContactDetailsProps {
 
 function UserContactDetails({ user }: UserContactDetailsProps) {
   const [isOpen, setIsOpen] = useState(false);
+
   return (
     <Container>
       <h4>
         Contact details{' '}
         <i onClick={() => setIsOpen(true)} className="far fa-edit"></i>
       </h4>
+      <p>User since: {new Date(user.created).toLocaleDateString()}</p>
       <p>Location: {user.location.name}</p>
       <p>Email: {user.email}</p>
       <p>
