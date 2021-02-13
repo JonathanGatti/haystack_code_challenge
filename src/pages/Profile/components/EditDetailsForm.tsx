@@ -1,16 +1,15 @@
 import React, { useState, ChangeEvent } from 'react';
-import styled from 'styled-components';
 import { UPDATE_VIEWER } from '../../../api/queries';
 import { useMutation } from '@apollo/client';
-import { ViewerInterface, Location } from '../interfaces';
+import { ViewerInterface } from '../interfaces';
 import { FormContainer, Button } from '../../../common/styles';
 
 interface EditDetailsFormProps {
   user: ViewerInterface;
-  onClose: (val: boolean) => void;
+  onFormOpen: (val: boolean) => void;
 }
 
-function EditDetailsForm({ onClose, user }: EditDetailsFormProps) {
+function EditDetailsForm({ onFormOpen, user }: EditDetailsFormProps) {
   const [newPhotoUrl, setNewPhotoUrl] = useState('');
   const [newEmail, setNewEmail] = useState('');
   const [newLinkedinUrl, setNewLinkedinUrl] = useState('');
@@ -34,7 +33,6 @@ function EditDetailsForm({ onClose, user }: EditDetailsFormProps) {
   };
 
   const handleClick = () => {
-    onClose(false);
     updateUser({
       variables: {
         id: user.id,
@@ -45,6 +43,7 @@ function EditDetailsForm({ onClose, user }: EditDetailsFormProps) {
         github: newGithubUrl === '' ? user.github : newGithubUrl,
       },
     });
+    onFormOpen(false);
   };
 
   return (

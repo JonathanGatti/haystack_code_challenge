@@ -19,7 +19,7 @@ const Container = styled.div`
     border-radius: 8px;
   }
 `;
-const UserDetails = styled.div`
+const UserDetailsContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 5rem;
@@ -37,7 +37,7 @@ function UserInfo({ user }: UserInfoProps) {
       <Container>
         <img alt="profile" src={user.photo}></img>
 
-        <UserDetails>
+        <UserDetailsContainer>
           <h3>
             {user.firstName} {user.lastName}
           </h3>
@@ -47,7 +47,7 @@ function UserInfo({ user }: UserInfoProps) {
           <hr />
           <h3>About</h3>
           <p>{user.biography}</p>
-        </UserDetails>
+        </UserDetailsContainer>
       </Container>
       <UserContactDetails user={user} />
     </>

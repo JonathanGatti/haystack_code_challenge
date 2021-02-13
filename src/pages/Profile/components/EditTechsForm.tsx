@@ -6,7 +6,7 @@ import { Tech, Icon } from '../interfaces';
 import { useMutation } from '@apollo/client';
 
 interface EditTechsForm {
-  setEditFormOpen: (val: boolean) => void;
+  onFormOpen: (val: boolean) => void;
   techs: Tech[];
   userId: string;
 }
@@ -24,7 +24,7 @@ const initialTechnologies = [
   { uid: 'css-3', weight: 0 },
 ];
 
-function EditTechsForm({ setEditFormOpen, techs, userId }: EditTechsForm) {
+function EditTechsForm({ onFormOpen, techs, userId }: EditTechsForm) {
   const [updateUser] = useMutation(UPDATE_TECHS);
   const [newTechnologies, setNewTechnologies] = useState<Tech[]>(
     initialTechnologies
@@ -64,13 +64,13 @@ function EditTechsForm({ setEditFormOpen, techs, userId }: EditTechsForm) {
         techs: newTechnologies,
       },
     });
-    setEditFormOpen(false);
+    onFormOpen(false);
   };
 
-  const renderTechs = () => {
+  const renderTechIcons = () => {
     let searchedTechs: Icon[] = [];
     if (value !== '') {
-      searchedTechs = technologies.filter((tech) => tech.name.includes(value));
+      searchedTechs = technologies.filter((icon) => icon.name.includes(value));
     }
     return searchedTechs.map((icon) => (
       <li>
@@ -91,7 +91,7 @@ function EditTechsForm({ setEditFormOpen, techs, userId }: EditTechsForm) {
             onChange={handleChange}
           />
         </label>
-        <ul>{renderTechs()}</ul>
+        <ul>{renderTechIcons()}</ul>
       </form>
       <Button onClick={handleSubmit}>Submit</Button>
     </FormContainer>

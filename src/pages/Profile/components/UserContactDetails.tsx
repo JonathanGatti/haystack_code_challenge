@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Data, Location, ViewerInterface } from '../interfaces';
+import { ViewerInterface } from '../interfaces';
 import EditDetailsForm from './EditDetailsForm';
 import styled from 'styled-components';
 
@@ -13,25 +13,17 @@ const Container = styled.div`
   }
 `;
 
-// interface UserContactDetailsProps {
-//   email: string;
-//   linkedin: string | null;
-//   github: string | null;
-//   location: Location;
-//   userId: string;
-// }
-
 interface UserContactDetailsProps {
   user: ViewerInterface;
 }
 
 function UserContactDetails({ user }: UserContactDetailsProps) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isFormOpen, setIsFormOpen] = useState(false);
   return (
     <Container>
       <h4>
         Contact details{' '}
-        <i onClick={() => setIsOpen(true)} className="far fa-edit"></i>
+        <i onClick={() => setIsFormOpen(true)} className="far fa-edit"></i>
       </h4>
       <p>User since: {new Date(user.created).toLocaleDateString()}</p>
       <p>Location: {user.location.name}</p>
@@ -46,7 +38,7 @@ function UserContactDetails({ user }: UserContactDetailsProps) {
           GitHub
         </a>
       </p>
-      {isOpen && <EditDetailsForm onClose={setIsOpen} user={user} />}
+      {isFormOpen && <EditDetailsForm onFormOpen={setIsFormOpen} user={user} />}
     </Container>
   );
 }

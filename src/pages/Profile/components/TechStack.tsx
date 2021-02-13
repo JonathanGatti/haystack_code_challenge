@@ -20,7 +20,7 @@ interface TechStackProps {
 }
 
 function TechStack({ techs, userId }: TechStackProps) {
-  const [isEditFormOpen, setEditFormOpen] = useState(false);
+  const [isFormOpen, setFormOpen] = useState(false);
 
   const renderTechnologies = () => {
     return techs.map((tech) => {
@@ -36,14 +36,10 @@ function TechStack({ techs, userId }: TechStackProps) {
       <h4>Tech Stack</h4>
       {renderTechnologies()}
       <div>
-        <Button onClick={() => setEditFormOpen(true)}>Add Tech</Button>
+        <Button onClick={() => setFormOpen(true)}>Add Tech</Button>
       </div>
-      {isEditFormOpen && (
-        <EditTechsForm
-          userId={userId}
-          techs={techs}
-          setEditFormOpen={setEditFormOpen}
-        />
+      {isFormOpen && (
+        <EditTechsForm userId={userId} techs={techs} onFormOpen={setFormOpen} />
       )}
     </Container>
   );
