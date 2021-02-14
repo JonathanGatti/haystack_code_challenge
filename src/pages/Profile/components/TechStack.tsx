@@ -33,7 +33,7 @@ function TechStack({ techs, userId }: TechStackProps) {
   };
   return (
     <Container>
-      <h4>Tech Stack</h4>
+      <h3>Tech Stack</h3>
       {renderTechnologies()}
       <div>
         <Button onClick={() => setFormOpen(true)}>Add Tech</Button>

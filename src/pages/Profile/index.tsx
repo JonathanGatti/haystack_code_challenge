@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import { useQuery } from '@apollo/client';
 import { VIEWER_QUERY } from '../../api/queries';
 import styled from 'styled-components';
+import { mediaQueries } from '../../styles/mediaQueries';
 
 const Container = styled.div`
   margin-left: auto;
