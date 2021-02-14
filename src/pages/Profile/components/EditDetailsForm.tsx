@@ -2,7 +2,7 @@ import React, { useState, ChangeEvent } from 'react';
 import { UPDATE_VIEWER } from '../../../api/queries';
 import { useMutation } from '@apollo/client';
 import { ViewerInterface } from '../interfaces';
-import { FormContainer, Button } from '../../../common/styled_components';
+import { EditFormContainer, Button } from '../../../common/styled_components';
 
 interface EditDetailsFormProps {
   user: ViewerInterface;
@@ -47,7 +47,7 @@ function EditDetailsForm({ onFormOpen, user }: EditDetailsFormProps) {
   };
 
   return (
-    <FormContainer>
+    <EditFormContainer>
       <h3>Edit Intro</h3>
       <Button className="close-btn" onClick={() => onFormOpen(false)}>
         X
@@ -82,7 +82,7 @@ function EditDetailsForm({ onFormOpen, user }: EditDetailsFormProps) {
         />
       </form>
       <Button onClick={handleClick}>Submit</Button>
-    </FormContainer>
+    </EditFormContainer>
   );
 }
 

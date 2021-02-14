@@ -10,9 +10,11 @@ interface UserContactDetailsProps {
 
 const Container = styled.div`
   width: 30vw;
+  position: absolute;
+  margin-top: 15rem;
   @media ${mediaQueries.laptop} {
+    margin-top: 0;
     position: relative;
-    margin-top: 31rem;
     margin-left: auto;
     margin-right: auto;
     width: 80vw;
@@ -35,7 +37,7 @@ function UserContactDetails({ user }: UserContactDetailsProps) {
       <p>Location: {user.location.name}</p>
       <p>
         <a target="_blank" href={`${user.linkedInProfileURL}`}>
-          Linkedin
+          LinkedIn
         </a>
       </p>
       <p>

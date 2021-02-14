@@ -26,7 +26,7 @@ function TechStack({ techs, userId }: TechStackProps) {
     return techs.map((tech) => {
       for (let icon of icons) {
         if (tech.uid === icon.name) {
-          return <img src={icon.iconUrl}></img>;
+          return <img src={icon.iconUrl} />;
         }
       }
     });

@@ -14,17 +14,27 @@ interface UserInfoProps {
 
 const Container = styled.div`
   display: flex;
-  height: 36vh;
   width: 100%;
   @media ${mediaQueries.laptop} {
     flex-direction: column;
     align-items: center;
+    .circle {
+      display: none;
+    }
   }
   img {
     max-height: 250px;
     max-width: 300px;
     object-fit: cover;
     border-radius: 8px;
+  }
+  .circle {
+    position: absolute;
+    background-color: #1a3f4d;
+    opacity: 0.1;
+    width: 500px;
+    height: 1100px;
+    transform: rotate(-50deg) translate(161%, 15%);
   }
   .text-area {
     display: flex;
@@ -82,6 +92,7 @@ function UserInfo({ user }: UserInfoProps) {
           <h2>
             {user.firstName} {user.lastName}
           </h2>
+          <div className="circle"></div>
           <span>Current Company: {user.currentCompany}</span>
           <TechStack userId={user.id} techs={user.techs} />
 
@@ -102,8 +113,8 @@ function UserInfo({ user }: UserInfoProps) {
             </div>
           )}
         </UserDetailsContainer>
+        <UserContactDetails user={user} />
       </Container>
-      <UserContactDetails user={user} />
     </>
   );
 }
