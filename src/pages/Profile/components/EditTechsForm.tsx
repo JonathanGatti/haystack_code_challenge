@@ -1,6 +1,6 @@
 import React, { useState, ChangeEvent, MouseEvent, useEffect } from 'react';
-import { UPDATE_TECHS } from '../../../api/queries';
-import { FormContainer, Button } from '../../../common/styles';
+import { UPDATE_VIEWER_TECHS } from '../../../api/queries';
+import { FormContainer, Button } from '../../../common/styled_components';
 import { technologies } from '../../../assets/technologies';
 import { Tech, Icon } from '../interfaces';
 import { useMutation } from '@apollo/client';
@@ -25,7 +25,7 @@ const initialTechnologies = [
 ];
 
 function EditTechsForm({ onFormOpen, techs, userId }: EditTechsForm) {
-  const [updateUser] = useMutation(UPDATE_TECHS);
+  const [updateUser] = useMutation(UPDATE_VIEWER_TECHS);
   const [newTechnologies, setNewTechnologies] = useState<Tech[]>(
     initialTechnologies
   );

@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState, ChangeEvent } from 'react';
 import styled from 'styled-components';
 import { ViewerInterface } from '../interfaces';
 import TechStack from './TechStack';
 import UserContactDetails from './UserContactDetails';
+import { UPDATE_VIEWER_BIOGRAPHY } from '../../../api/queries';
+import { useMutation } from '@apollo/client';
+import { Button } from '../../../common/styled_components';
 
 interface UserInfoProps {
   user: ViewerInterface;
@@ -18,6 +21,13 @@ const Container = styled.div`
     object-fit: cover;
     border-radius: 8px;
   }
+  .text-area {
+    display: flex;
+    flex-direction: column;
+    textarea {
+      width: 90%;
+    }
+  }
 `;
 const UserDetailsContainer = styled.div`
   display: flex;
@@ -32,6 +42,25 @@ const UserDetailsContainer = styled.div`
 `;
 
 function UserInfo({ user }: UserInfoProps) {
+  const [showTextInput, setTextInput] = useState(false);
+  const [newBiography, setNewBiography] = useState('');
+  const [updateBiography] = useMutation(UPDATE_VIEWER_BIOGRAPHY);
+
+  const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    setNewBiography(e.target.value);
+  };
+
+  const handleSubmit = () => {
+    if (newBiography !== '') {
+      updateBiography({
+        variables: {
+          id: user.id,
+          biography: newBiography,
+        },
+      });
+    }
+    setTextInput(false);
+  };
   return (
     <>
       <Container>
@@ -45,8 +74,18 @@ function UserInfo({ user }: UserInfoProps) {
           <TechStack userId={user.id} techs={user.techs} />
 
           <hr />
-          <h3>About</h3>
-          <p>{user.biography}</p>
+          <h3>
+            About{' '}
+            <i onClick={() => setTextInput(true)} className="fas fa-edit" />
+          </h3>
+          {!showTextInput ? (
+            <p>{user.biography}</p>
+          ) : (
+            <div className="text-area">
+              <textarea onChange={handleChange} />
+              <Button onClick={handleSubmit}>Submit</Button>
+            </div>
+          )}
         </UserDetailsContainer>
       </Container>
       <UserContactDetails user={user} />

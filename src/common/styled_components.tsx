@@ -6,7 +6,7 @@ export const FormContainer = styled.div`
   top: 50%;
   transform: translate(-50%, -50%);
   z-index: 10;
-  width: 40vw;
+  width: 35vw;
   height: 60vh;
   background-color: whitesmoke;
   border: 1px solid #1a3f4d;

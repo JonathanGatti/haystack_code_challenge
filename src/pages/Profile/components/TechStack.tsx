@@ -3,7 +3,7 @@ import { Tech } from '../interfaces';
 import styled from 'styled-components';
 import { technologies } from '../../../assets/technologies';
 import EditTechsForm from './EditTechsForm';
-import { Button } from '../../../common/styles';
+import { Button } from '../../../common/styled_components';
 
 const Container = styled.div`
   img {
