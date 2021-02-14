@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState, ChangeEvent, memo } from 'react';
 import styled from 'styled-components';
 import { ViewerInterface } from '../interfaces';
 import TechStack from './TechStack';
@@ -42,7 +42,7 @@ const UserDetailsContainer = styled.div`
 `;
 
 function UserInfo({ user }: UserInfoProps) {
-  const [showTextInput, setTextInput] = useState(false);
+  const [showTextInput, toggleTextInput] = useState(false);
   const [newBiography, setNewBiography] = useState('');
   const [updateBiography] = useMutation(UPDATE_VIEWER_BIOGRAPHY);
 
@@ -59,7 +59,7 @@ function UserInfo({ user }: UserInfoProps) {
         },
       });
     }
-    setTextInput(false);
+    toggleTextInput(!showTextInput);
   };
   return (
     <>
@@ -76,7 +76,10 @@ function UserInfo({ user }: UserInfoProps) {
           <hr />
           <h3>
             About{' '}
-            <i onClick={() => setTextInput(true)} className="fas fa-edit" />
+            <i
+              onClick={() => toggleTextInput(!showTextInput)}
+              className="fas fa-edit"
+            />
           </h3>
           {!showTextInput ? (
             <p>{user.biography}</p>
@@ -93,4 +96,4 @@ function UserInfo({ user }: UserInfoProps) {
   );
 }
 
-export default UserInfo;
+export default memo(UserInfo);

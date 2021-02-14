@@ -1,4 +1,4 @@
-export const technologies = [
+export const icons = [
   {
     name: 'react',
     iconUrl: 'https://cdn.auth0.com/blog/react-js/react.png'

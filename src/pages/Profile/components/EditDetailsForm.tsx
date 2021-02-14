@@ -44,39 +44,40 @@ function EditDetailsForm({ onFormOpen, user }: EditDetailsFormProps) {
 
   return (
     <FormContainer>
-      <div>
-        <h3>Edit Intro</h3>
-        <form>
-          <label htmlFor="photo"> Edit Profile Picture</label>
-          <input
-            id="photo"
-            onChange={handlePhotoChange}
-            placeholder=" Insert image url..."
-          />
+      <h3>Edit Intro</h3>
+      <Button className="close-btn" onClick={() => onFormOpen(false)}>
+        X
+      </Button>
+      <form>
+        <label htmlFor="photo"> Edit Profile Picture</label>
+        <input
+          id="photo"
+          onChange={handlePhotoChange}
+          placeholder=" Insert image url..."
+        />
 
-          <label htmlFor="email">New Email </label>
-          <input
-            id="email"
-            onChange={handleEmailChange}
-            placeholder=" Insert new email..."
-          />
+        <label htmlFor="email">New Email </label>
+        <input
+          id="email"
+          onChange={handleEmailChange}
+          placeholder=" Insert new email..."
+        />
 
-          <label htmlFor="linkedin">New LinkedIn account</label>
-          <input
-            id="linkedin"
-            onChange={handleLinkedinChange}
-            placeholder=" Insert new linkedin link..."
-          />
+        <label htmlFor="linkedin">New LinkedIn account</label>
+        <input
+          id="linkedin"
+          onChange={handleLinkedinChange}
+          placeholder=" Insert new linkedin link..."
+        />
 
-          <label htmlFor="github">New Github account</label>
-          <input
-            id="github"
-            onChange={handleGithubChange}
-            placeholder=" Insert new github link..."
-          />
-        </form>
-        <Button onClick={handleClick}>Submit</Button>
-      </div>
+        <label htmlFor="github">New Github account</label>
+        <input
+          id="github"
+          onChange={handleGithubChange}
+          placeholder=" Insert new github link..."
+        />
+      </form>
+      <Button onClick={handleClick}>Submit</Button>
     </FormContainer>
   );
 }

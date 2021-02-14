@@ -1,7 +1,7 @@
 import React, { useState, ChangeEvent, MouseEvent, useEffect } from 'react';
 import { UPDATE_VIEWER_TECHS } from '../../../api/queries';
 import { FormContainer, Button } from '../../../common/styled_components';
-import { technologies } from '../../../assets/technologies';
+import { icons } from '../../../assets/icons';
 import { Tech, Icon } from '../interfaces';
 import { useMutation } from '@apollo/client';
 
@@ -26,7 +26,7 @@ const initialTechnologies = [
 
 function EditTechsForm({ onFormOpen, techs, userId }: EditTechsForm) {
   const [updateUser] = useMutation(UPDATE_VIEWER_TECHS);
-  const [newTechnologies, setNewTechnologies] = useState<Tech[]>(
+  const [editedTechnologies, setEditedTechnologies] = useState<Tech[]>(
     initialTechnologies
   );
   const [newTech, setNewTech] = useState<Tech>(initialTech);
@@ -37,13 +37,15 @@ function EditTechsForm({ onFormOpen, techs, userId }: EditTechsForm) {
       uid: tech.uid,
       weight: tech.weight,
     }));
-    setNewTechnologies([...newTechs]);
+    setEditedTechnologies([...newTechs]);
   }, []);
 
   useEffect(() => {
     if (newTech.uid !== '') {
-      let includes = newTechnologies.filter((tech) => tech.uid === newTech.uid);
-      if (!includes) setNewTechnologies([...newTechnologies, newTech]);
+      let includes = editedTechnologies.filter(
+        (tech) => tech.uid === newTech.uid
+      );
+      if (!includes[0]) setEditedTechnologies([...editedTechnologies, newTech]);
     }
   }, [newTech.uid]);
 
@@ -64,7 +66,7 @@ function EditTechsForm({ onFormOpen, techs, userId }: EditTechsForm) {
     updateUser({
       variables: {
         id: userId,
-        techs: newTechnologies,
+        techs: editedTechnologies,
       },
     });
     onFormOpen(false);
@@ -73,7 +75,7 @@ function EditTechsForm({ onFormOpen, techs, userId }: EditTechsForm) {
   const renderTechIcons = () => {
     let searchedTechs: Icon[] = [];
     if (value !== '') {
-      searchedTechs = technologies.filter((icon) => icon.name.includes(value));
+      searchedTechs = icons.filter((icon) => icon.name.includes(value));
     }
     return searchedTechs.map((icon) => (
       <li>
@@ -85,15 +87,17 @@ function EditTechsForm({ onFormOpen, techs, userId }: EditTechsForm) {
   return (
     <FormContainer>
       <h3>Add techs</h3>
+      <Button className="close-btn" onClick={() => onFormOpen(false)}>
+        X
+      </Button>
       <form>
-        <label>
-          Search tech{' '}
-          <input
-            placeholder="Search..."
-            value={value}
-            onChange={handleChange}
-          />
-        </label>
+        <label htmlFor="tech">Search tech </label>
+        <input
+          id="tech"
+          placeholder="Search..."
+          value={value}
+          onChange={handleChange}
+        />
         <ul>{renderTechIcons()}</ul>
       </form>
       <Button onClick={handleSubmit}>Submit</Button>

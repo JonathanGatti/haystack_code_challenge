@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import { Tech } from '../interfaces';
 import styled from 'styled-components';
-import { technologies } from '../../../assets/technologies';
+import { icons } from '../../../assets/icons';
 import EditTechsForm from './EditTechsForm';
 import { Button } from '../../../common/styled_components';
 
@@ -24,7 +24,7 @@ function TechStack({ techs, userId }: TechStackProps) {
 
   const renderTechnologies = () => {
     return techs.map((tech) => {
-      for (let icon of technologies) {
+      for (let icon of icons) {
         if (tech.uid === icon.name) {
           return <img src={icon.iconUrl}></img>;
         }

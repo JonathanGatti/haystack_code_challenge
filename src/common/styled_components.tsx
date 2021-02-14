@@ -14,12 +14,11 @@ export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   form {
     display: flex;
     flex-direction: column;
     height: 90%;
-    width: 100%;
+    width: 80%;
   }
   input {
     border-radius: 5px;
@@ -33,8 +32,17 @@ export const FormContainer = styled.div`
   li {
     display: flex;
     align-items: center;
-    justify-content: center;
     overflow: scroll;
+  }
+  .close-btn {
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    margin-left: 90%;
+    margin-top: 5px;
   }
 `;
 
