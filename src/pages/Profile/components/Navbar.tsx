@@ -45,13 +45,13 @@ function Navbar({ photo, status }: NavbarProps) {
   return (
     <Container>
       <ul>
-        <li className="logo">Heystack</li>
+        <li className="logo">Haystack</li>
         <li>Find Jobs</li>
         <li>Inbox</li>
         <li>My Jobs</li>
         <li>Status {status ? 'offline' : 'online'}</li>
         <li>
-          <img alt="profile" src={photo}></img>
+          <img alt="profile" src={photo} />
         </li>
       </ul>
     </Container>
