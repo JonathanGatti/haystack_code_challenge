@@ -29,7 +29,7 @@ function EditTechsForm({ onFormOpen, techs, userId }: EditTechsForm) {
   const [newTechnologies, setNewTechnologies] = useState<Tech[]>(
     initialTechnologies
   );
-  const [newTech, setNewTech] = useState(initialTech);
+  const [newTech, setNewTech] = useState<Tech>(initialTech);
   const [value, setValue] = useState('');
 
   useEffect(() => {

@@ -10,37 +10,33 @@ interface EditDetailsFormProps {
 }
 
 function EditDetailsForm({ onFormOpen, user }: EditDetailsFormProps) {
-  const [newPhotoUrl, setNewPhotoUrl] = useState('');
-  const [newEmail, setNewEmail] = useState('');
-  const [newLinkedinUrl, setNewLinkedinUrl] = useState('');
-  const [newGithubUrl, setNewGithubUrl] = useState('');
+  const [editedUser, editUser] = useState<ViewerInterface>(user);
   const [updateUser] = useMutation(UPDATE_VIEWER);
 
   const handlePhotoChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setNewPhotoUrl(e.target.value);
+    editUser({ ...editedUser, photo: e.target.value });
   };
 
   const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setNewEmail(e.target.value);
+    editUser({ ...editedUser, email: e.target.value });
   };
 
   const handleLinkedinChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setNewLinkedinUrl(e.target.value);
+    editUser({ ...editedUser, linkedInProfileURL: e.target.value });
   };
 
   const handleGithubChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setNewGithubUrl(e.target.value);
+    editUser({ ...editedUser, github: e.target.value });
   };
 
   const handleClick = () => {
     updateUser({
       variables: {
         id: user.id,
-        photo: newPhotoUrl === '' ? user.photo : newPhotoUrl,
-        email: newEmail === '' ? user.email : newEmail,
-        linkedInProfileURL:
-          newLinkedinUrl === '' ? user.linkedInProfileURL : newLinkedinUrl,
-        github: newGithubUrl === '' ? user.github : newGithubUrl,
+        photo: editedUser.photo,
+        email: editedUser.email,
+        linkedInProfileURL: editedUser.linkedInProfileURL,
+        github: editedUser.github,
       },
     });
     onFormOpen(false);

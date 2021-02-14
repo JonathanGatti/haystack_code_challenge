@@ -6,7 +6,7 @@ export const FormContainer = styled.div`
   top: 50%;
   transform: translate(-50%, -50%);
   z-index: 10;
-  width: 35vw;
+  width: 40vw;
   height: 60vh;
   background-color: whitesmoke;
   border: 1px solid #1a3f4d;
@@ -19,7 +19,7 @@ export const FormContainer = styled.div`
     display: flex;
     flex-direction: column;
     height: 90%;
-    width: 55%;
+    width: 100%;
   }
   input {
     border-radius: 5px;
@@ -35,9 +35,6 @@ export const FormContainer = styled.div`
     align-items: center;
     justify-content: center;
     overflow: scroll;
-  }
-  h3 {
-    transform: translate(-145%);
   }
 `;
 
