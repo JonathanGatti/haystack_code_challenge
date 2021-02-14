@@ -39,7 +39,11 @@ function TechStack({ techs, userId }: TechStackProps) {
         <Button onClick={() => setFormOpen(true)}>Add Tech</Button>
       </div>
       {isFormOpen && (
-        <EditTechsForm userId={userId} techs={techs} onFormOpen={setFormOpen} />
+        <EditTechsForm
+          userId={userId}
+          _techs={techs}
+          onFormOpen={setFormOpen}
+        />
       )}
     </Container>
   );

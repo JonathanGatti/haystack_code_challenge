@@ -7,7 +7,7 @@ import { useMutation } from '@apollo/client';
 
 interface EditTechsForm {
   onFormOpen: (val: boolean) => void;
-  techs: Tech[];
+  _techs: Tech[];
   userId: string;
 }
 
@@ -16,28 +16,18 @@ const initialTech = {
   weight: 0,
 };
 
-const initialTechnologies = [
-  { uid: 'react', weight: 0 },
-  { uid: 'javascript', weight: 0 },
-  { uid: 'typescript', weight: 0 },
-  { uid: 'html5', weight: 0 },
-  { uid: 'css-3', weight: 0 },
-];
-
-function EditTechsForm({ onFormOpen, techs, userId }: EditTechsForm) {
+function EditTechsForm({ onFormOpen, _techs, userId }: EditTechsForm) {
   const [updateUser] = useMutation(UPDATE_VIEWER_TECHS);
-  const [editedTechnologies, setEditedTechnologies] = useState<Tech[]>(
-    initialTechnologies
-  );
+  const [editedTechnologies, setEditedTechnologies] = useState<Tech[]>(_techs);
   const [newTech, setNewTech] = useState<Tech>(initialTech);
   const [value, setValue] = useState('');
 
   useEffect(() => {
-    const newTechs = techs.map((tech) => ({
+    const techs = _techs.map((tech) => ({
       uid: tech.uid,
       weight: tech.weight,
     }));
-    setEditedTechnologies([...newTechs]);
+    setEditedTechnologies([...techs]);
   }, []);
 
   useEffect(() => {
@@ -63,12 +53,16 @@ function EditTechsForm({ onFormOpen, techs, userId }: EditTechsForm) {
   };
 
   const handleSubmit = () => {
-    updateUser({
-      variables: {
-        id: userId,
-        techs: editedTechnologies,
-      },
-    });
+    try {
+      updateUser({
+        variables: {
+          id: userId,
+          techs: editedTechnologies,
+        },
+      });
+    } catch (e) {
+      console.log(e);
+    }
     onFormOpen(false);
   };
 
@@ -79,7 +73,7 @@ function EditTechsForm({ onFormOpen, techs, userId }: EditTechsForm) {
     }
     return searchedTechs.map((icon) => (
       <li>
-        <img alt="tech icon" src={icon.iconUrl}></img>
+        <img alt="tech icon" src={icon.iconUrl} />
         <Button onClick={(e) => handleClick(e, icon.name)}>Add Tech</Button>
       </li>
     ));

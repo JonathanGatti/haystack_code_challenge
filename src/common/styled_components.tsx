@@ -6,7 +6,7 @@ export const FormContainer = styled.div`
   top: 50%;
   transform: translate(-50%, -50%);
   z-index: 10;
-  width: 40vw;
+  width: 30vw;
   height: 60vh;
   background-color: whitesmoke;
   border: 1px solid #1a3f4d;
@@ -17,7 +17,7 @@ export const FormContainer = styled.div`
   form {
     display: flex;
     flex-direction: column;
-    height: 90%;
+    height: 70%;
     width: 80%;
   }
   input {
@@ -28,11 +28,11 @@ export const FormContainer = styled.div`
   ul {
     height: 20vw;
     list-style: none;
+    overflow: scroll;
   }
   li {
     display: flex;
     align-items: center;
-    overflow: scroll;
   }
   .close-btn {
     width: 25px;

@@ -30,15 +30,19 @@ function EditDetailsForm({ onFormOpen, user }: EditDetailsFormProps) {
   };
 
   const handleClick = () => {
-    updateUser({
-      variables: {
-        id: user.id,
-        photo: editedUser.photo,
-        email: editedUser.email,
-        linkedInProfileURL: editedUser.linkedInProfileURL,
-        github: editedUser.github,
-      },
-    });
+    try {
+      updateUser({
+        variables: {
+          id: user.id,
+          photo: editedUser.photo,
+          email: editedUser.email,
+          linkedInProfileURL: editedUser.linkedInProfileURL,
+          github: editedUser.github,
+        },
+      });
+    } catch (e) {
+      console.log(e);
+    }
     onFormOpen(false);
   };
 

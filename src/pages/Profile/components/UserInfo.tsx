@@ -52,12 +52,16 @@ function UserInfo({ user }: UserInfoProps) {
 
   const handleSubmit = () => {
     if (newBiography !== '') {
-      updateBiography({
-        variables: {
-          id: user.id,
-          biography: newBiography,
-        },
-      });
+      try {
+        updateBiography({
+          variables: {
+            id: user.id,
+            biography: newBiography,
+          },
+        });
+      } catch (e) {
+        console.log(e);
+      }
     }
     toggleTextInput(!showTextInput);
   };
