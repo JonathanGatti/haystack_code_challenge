@@ -41,7 +41,10 @@ function EditTechsForm({ onFormOpen, techs, userId }: EditTechsForm) {
   }, []);
 
   useEffect(() => {
-    if (newTech.uid !== '') setNewTechnologies([...newTechnologies, newTech]);
+    if (newTech.uid !== '') {
+      let includes = newTechnologies.filter((tech) => tech.uid === newTech.uid);
+      if (!includes) setNewTechnologies([...newTechnologies, newTech]);
+    }
   }, [newTech.uid]);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
