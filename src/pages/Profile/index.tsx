@@ -1,10 +1,9 @@
 import React from 'react';
-import UserInfo from './components/UserInfo';
+import User from './components/User';
 import Navbar from './components/Navbar';
 import { useQuery } from '@apollo/client';
 import { VIEWER_QUERY } from '../../api/queries';
 import styled from 'styled-components';
-import { mediaQueries } from '../../styles/mediaQueries';
 
 const Container = styled.div`
   margin-left: auto;
@@ -12,6 +11,7 @@ const Container = styled.div`
   width: 80vw;
   height: 100vh;
   color: #1a3f4d;
+  font-size: 18px;
 `;
 
 function Profile() {
@@ -22,7 +22,7 @@ function Profile() {
   return (
     <Container>
       <Navbar photo={data.viewer.photo} status={data.viewer.active} />
-      <UserInfo user={data.viewer} />
+      <User user={data.viewer} />
     </Container>
   );
 }

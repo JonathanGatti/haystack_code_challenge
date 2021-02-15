@@ -33,6 +33,7 @@ const Container = styled.div`
   }
   .logo {
     color: #d6a52b;
+    font-size: 26px;
   }
 `;
 

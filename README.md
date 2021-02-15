@@ -1,10 +1,12 @@
-# Getting Started with Create React App
+# User Page Layout
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Get Started
 
-## Available Scripts
+To install the packages, from the project directory, run:
 
-In the project directory, you can run:
+### `yarn install`
+
+Initialize project, from the project directory, you can run:
 
 ### `yarn start`
 

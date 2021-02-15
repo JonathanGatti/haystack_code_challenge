@@ -25,10 +25,10 @@ export  const VIEWER_QUERY = gql`
 export const UPDATE_VIEWER = gql`
   mutation EditUser(
       $id: ID!, 
-      $photo: String, 
-      $email: String, 
-      $linkedInProfileURL: String, 
-      $github: String
+      $photo: String!, 
+      $email: String!, 
+      $linkedInProfileURL: String!, 
+      $github: String!
       ){
     editUser(
       id: $id, 
@@ -56,14 +56,15 @@ export const UPDATE_VIEWER_TECHS = gql`
       update: { techs: $techs } 
     ){
     id
-    techs {uid} }
+    techs {uid} 
+  }
 }
 `;
 
 export const UPDATE_VIEWER_BIOGRAPHY= gql`
   mutation EditUser(
     $id: ID!,
-    $biography: String 
+    $biography: String! 
   ){
     editUser(
       id: $id

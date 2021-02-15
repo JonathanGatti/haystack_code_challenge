@@ -54,7 +54,7 @@ export const EditFormContainer = styled.div`
   position: absolute;
   left: 180%;
   top: 10%;
-  transform: translate(-100%, -50%);
+  transform: translate(-100%, -65%);
   z-index: 10;
   width: 30vw;
   height: 60vh;

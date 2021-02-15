@@ -7,6 +7,7 @@ import { UPDATE_VIEWER_BIOGRAPHY } from '../../../api/queries';
 import { useMutation } from '@apollo/client';
 import { Button } from '../../../common/styled_components';
 import { mediaQueries } from '../../../styles/mediaQueries';
+import image from '../../../assets/background-image2.jpg';
 
 interface UserInfoProps {
   user: ViewerInterface;
@@ -18,9 +19,6 @@ const Container = styled.div`
   @media ${mediaQueries.laptop} {
     flex-direction: column;
     align-items: center;
-    .circle {
-      display: none;
-    }
   }
   img {
     max-height: 250px;
@@ -28,14 +26,7 @@ const Container = styled.div`
     object-fit: cover;
     border-radius: 8px;
   }
-  .circle {
-    position: absolute;
-    background-color: #1a3f4d;
-    opacity: 0.1;
-    width: 500px;
-    height: 1100px;
-    transform: rotate(-50deg) translate(161%, 15%);
-  }
+
   .text-area {
     display: flex;
     flex-direction: column;
@@ -51,15 +42,31 @@ const UserDetailsContainer = styled.div`
   width: 60vw;
   @media ${mediaQueries.laptop} {
     margin-left: 0;
+    .image {
+      display: none;
+    }
   }
   hr {
     color: #1a3f4d;
     width: 100%;
     opacity: 0.8;
   }
+  .image {
+    background-image: url(${image});
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(45%, -75%);
+    width: 495px;
+    height: 400px;
+    opacity: 0.3;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
 `;
 
-function UserInfo({ user }: UserInfoProps) {
+function User({ user }: UserInfoProps) {
   const [showTextInput, toggleTextInput] = useState(false);
   const [newBiography, setNewBiography] = useState('');
   const [updateBiography] = useMutation(UPDATE_VIEWER_BIOGRAPHY);
@@ -92,9 +99,9 @@ function UserInfo({ user }: UserInfoProps) {
           <h2>
             {user.firstName} {user.lastName}
           </h2>
-          <div className="circle"></div>
           <span>Current Company: {user.currentCompany}</span>
           <TechStack userId={user.id} techs={user.techs} />
+          <div className="image" />
 
           <hr />
           <h3>
@@ -119,4 +126,4 @@ function UserInfo({ user }: UserInfoProps) {
   );
 }
 
-export default memo(UserInfo);
+export default memo(User);

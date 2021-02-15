@@ -7,8 +7,8 @@ import { Button } from '../../../common/styled_components';
 
 const Container = styled.div`
   img {
-    height: 50px;
-    width: 50px;
+    height: 65px;
+    width: 65px;
     object-fit: cover;
     margin: 0.3em 0.8em;
   }
